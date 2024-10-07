@@ -1,27 +1,38 @@
 package smket.textmarkierung_pt;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
+import smket.textmarkierung_pt.model.AufgabeLehrend;
+import smket.textmarkierung_pt.repository.AufgabeLehrendRepo;
+
 import java.io.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+
 public class HelloServlet extends HttpServlet {
-    private String message;
 
-    public void init() {
-        message = "Hello World!";
+    public static void main(String[] args){
+
+        String name = "persistence";
+        AufgabeLehrendRepo repo = new AufgabeLehrendRepo(name);
+
+        AufgabeLehrend test = new AufgabeLehrend();
+        test.setAufgabe("Test");
+        test.setLoesung("Lösung");
+
+        repo.addAufgabe(test);
+        repo.close();
+
+
+
+
+
+
+
+
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
-    }
-
-    public void destroy() {
-    }
 }

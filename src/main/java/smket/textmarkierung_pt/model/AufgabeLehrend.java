@@ -11,13 +11,13 @@ public class AufgabeLehrend {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long aId;
 
-    @Column(name="aufgabe", nullable=false)
+    @Column(name="aufgabe")
     private String aufgabe;
 
-    @Column(name="loesung", nullable=false)
+    @Column(name="loesung")
     private String loesung;
 
-    @OneToMany (mappedBy = "aufgabeLehr", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "lId", cascade = CascadeType.ALL)
     private List<LoesungStud> loesungStud;
 
     public AufgabeLehrend() {}
@@ -28,26 +28,30 @@ public class AufgabeLehrend {
     }
 
     public long getaId(){
-        return aId;
+        return this.aId;
     }
-    public String getAufgabe(){
+
+    public String getAufgabe() {
         return aufgabe;
     }
 
-    public String getLoesung(){
-        return loesung;
-    }
-    public List<LoesungStud> getLoesungStud(){
-        return loesungStud;
-    }
-    public void setAufgabe(String aufgabe){
+    public void setAufgabe(String aufgabe) {
         this.aufgabe = aufgabe;
     }
-    public void setLoesung(String loesung){
-        this.loesung = loesung;
-    }
-    public void setLoesungStud(List<LoesungStud> loesungStud){
-        this.loesungStud = loesungStud;
+
+    public String getLoesung() {
+        return loesung;
     }
 
+    public void setLoesung(String loesung) {
+        this.loesung = loesung;
+    }
+
+    public List<LoesungStud> getLoesungStud() {
+        return loesungStud;
+    }
+
+    public void setLoesungStud(List<LoesungStud> loesungStud) {
+        this.loesungStud = loesungStud;
+    }
 }

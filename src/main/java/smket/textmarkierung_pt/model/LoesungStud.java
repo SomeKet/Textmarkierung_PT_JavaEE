@@ -14,27 +14,21 @@ public class LoesungStud {
     @JoinColumn(name ="aufgabe_lehr_id", nullable = false)
     private AufgabeLehrend aufgabeLehrend;
 
+    public AufgabeLehrend getAufgabeLehrend() {
+        return aufgabeLehrend;
+    }
 
-    public LoesungStud(String loesung){
+
+    public String getLoesung() {
+        return loesung;
+    }
+
+    public void setLoesung(String loesung) {
         this.loesung = loesung;
     }
 
-    public LoesungStud() {
+    public long getlId() {
+        return lId;
     }
 
-    public long getId(){
-        return this.lId;
-    }
-
-    public String getLoesung(){
-        return this.loesung;
-    }
-
-    public void setLoesung(String loesung){
-        this.loesung = loesung;
-    }
-
-    public AufgabeLehrend getAufgabeLehrend(){
-        return this.aufgabeLehrend;
-    }
 }
