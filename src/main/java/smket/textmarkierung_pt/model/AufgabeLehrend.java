@@ -2,6 +2,7 @@ package smket.textmarkierung_pt.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,11 +21,15 @@ public class AufgabeLehrend {
     @OneToMany (mappedBy = "lId", cascade = CascadeType.ALL)
     private List<LoesungStud> loesungStud;
 
+    @ElementCollection
+    private List<Kategorie> kategorien = new ArrayList<Kategorie>();
+
     public AufgabeLehrend() {}
 
-    public AufgabeLehrend(String aufgabe, String loesung) {
+    public AufgabeLehrend(String aufgabe, String loesung, List<Kategorie> kategorien) {
         this.aufgabe = aufgabe;
         this.loesung = loesung;
+        this.kategorien = kategorien;
     }
 
     public long getaId(){
@@ -53,5 +58,13 @@ public class AufgabeLehrend {
 
     public void setLoesungStud(List<LoesungStud> loesungStud) {
         this.loesungStud = loesungStud;
+    }
+
+    public List<Kategorie> getKategorien() {
+        return kategorien;
+    }
+
+    public void setKategorie(List<Kategorie> kategorien) {
+        this.kategorien = kategorien;
     }
 }

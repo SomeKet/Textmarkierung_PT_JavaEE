@@ -3,53 +3,51 @@ package smket.textmarkierung_pt.repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import smket.textmarkierung_pt.model.AufgabeLehrend;
+import smket.textmarkierung_pt.model.LoesungStud;
+import smket.textmarkierung_pt.model.LoesungStud;
 
 
-
-
-public class AufgabeLehrendRepo {
+public class LoesungStudRepo {
 
     private EntityManager entityManager;
     private EntityManagerFactory entityManagerFactory;
 
-    public AufgabeLehrendRepo() {
-        this.entityManagerFactory = Persistence.createEntityManagerFactory("aufgabeLehrend_pu");
+    public LoesungStudRepo() {
+        this.entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
         this.entityManager = entityManagerFactory.createEntityManager();
     }
 
-    public AufgabeLehrendRepo(String name) {
+    public LoesungStudRepo(String name) {
         entityManagerFactory = Persistence.createEntityManagerFactory(name);
         this.entityManager = entityManagerFactory.createEntityManager();
     }
 
 
-    public AufgabeLehrend addAufgabe(AufgabeLehrend aufgabe){
+    public LoesungStud addloesung(LoesungStud loesung){
         entityManager.getTransaction().begin();
-        entityManager.persist(aufgabe);
+        entityManager.persist(loesung);
         entityManager.getTransaction().commit();
-        return aufgabe;
+        return loesung;
     }
 
-    public AufgabeLehrend findAufgabe(long id){
-        return entityManager.find(AufgabeLehrend.class, id);
+    public LoesungStud findloesung(long id){
+        return entityManager.find(LoesungStud.class, id);
     }
 
-    public AufgabeLehrend updateAufgabe(AufgabeLehrend aufgabe){
-        AufgabeLehrend toUpdate = findAufgabe(aufgabe.getaId());
+    public LoesungStud updateloesung(LoesungStud loesung){
+        LoesungStud toUpdate = findloesung(loesung.getlId());
         this.entityManager.getTransaction().begin();
 
-        toUpdate.setAufgabe(aufgabe.getAufgabe());
-        toUpdate.setLoesung(aufgabe.getLoesung());
-        toUpdate.setKategorie(aufgabe.getKategorien());
+        toUpdate.setLoesung(loesung.getLoesung());
+        toUpdate.setLoesung(loesung.getLoesung());
 
         this.entityManager.getTransaction().commit();
         return toUpdate;
     }
 
-    public void deleteAufgabe(long id){
+    public void deleteloesung(long id){
         this.entityManager.getTransaction().begin();
-        this.entityManager.remove(findAufgabe(id));
+        this.entityManager.remove(findloesung(id));
         this.entityManager.getTransaction().commit();
     }
 
