@@ -15,24 +15,27 @@
     <title>Aufagbe</title>
 </head>
 <body>
-<textarea id="textarea"></textarea>
+<div>
+    <form id="get-aufgabe-loesung-form" >
+        <textarea id="textarea"></textarea>
+        <input type="submit" value="Aufgabe speichern">
+    </form>
+</div>
 <div id="container">
-    <div id="buttonleiste"></div>
+    <div class="buttonleiste1" id="buttonleiste"></div>
     <div class="attribute-kategorie">
         <label for="bezeichnung">Bezeichnung</label>
         <label for="tag">Tag</label>
         <label for="farbe">Farbe</label>
-        <!--<button id="btn-kategorie" onclick="toggleKategorieForm()">Erstelle Kategorie</button> -->
     </div>
 
     <div class="output-values">
         <p id="bezeichnung_output"></p>
         <p id="tag_output"></p>
         <p id="farbe_output"></p>
-        <p id="leer"></p>
     </div>
 
-    <div class="erstelleKategorieForm">
+    <div class="erstelleKategorieForm" style="display:none">
         <form id="kategorieForm" name="kategorieForm">
             <input id="bezeichnung" type="text" placeholder="Bezeichnung" name="bezeichnung" required>
             <input id="tag" type="text" placeholder="Tag" name="tag" required>
@@ -40,6 +43,8 @@
             <button type="submit">Hinzufügen</button>
         </form>
     </div>
+    <button id="toggleKategorieForm">Kategorie erstellen</button>
+    <div id="aufgabe"></div>
 </div>
 </body>
 </html>

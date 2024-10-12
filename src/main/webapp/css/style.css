@@ -1,5 +1,8 @@
-.buttonleiste{
-    margin:5px;
+#container{
+    margin-top: 5px !important;
+}
+.buttonleiste1 button{
+    padding-right: 5px;
 }
 .erstelleKategorieForm{
     display:block;

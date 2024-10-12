@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "LehrendViewServlet", value = "/lehrendView")
-public class LehrendView extends HttpServlet {
+public class LehrendViewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public LehrendView(){
+    public LehrendViewServlet(){
         super();
     }
 
@@ -28,6 +28,9 @@ public class LehrendView extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("lehrendView.jsp");
         dispatcher.forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
 
