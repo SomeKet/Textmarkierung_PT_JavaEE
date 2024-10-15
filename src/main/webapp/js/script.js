@@ -1,3 +1,7 @@
+let test = []; let kategorien = [];
+window.test = test;
+window.kategorien = kategorien;
+
 tinymce.init({
     selector: '#textarea',
     height: 500,
@@ -44,6 +48,7 @@ function buttonErstellenKategorie(bez, tag, farbe) {
     let textNode = document.createTextNode(bez);
     btn.appendChild(textNode);
     document.getElementById("buttonleiste").appendChild(btn);
+    kategorien.push({bez, tag, farbe});
 
     btn.addEventListener('click', function() {
         const editor = tinymce.get('textarea'); //Instanziieren tinymce
@@ -63,9 +68,13 @@ function buttonErstellenKategorie(bez, tag, farbe) {
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("get-aufgabe-loesung-form").addEventListener('submit', (e) => {
         e.preventDefault();
-        const text = tinymce.get('textarea').getContent();
-        if(text){
-            document.getElementById('aufgabe').innerHTML = `<p>${aufgabe}</p>`;
+        const loesung = tinymce.get('textarea').getContent({format : 'text'});
+        const aufgabenstellung = document.getElementById('aufgabenstellung').value;
+        if(loesung != null && aufgabenstellung != null){
+            test.push({loesung, aufgabenstellung})
+            console.log(test);
+            document.getElementById('aufgabe').innerHTML += `<p>${aufgabenstellung}</p>`;
+            document.getElementById('aufgabe').innerHTML += `<p>${loesung}</p>`;
         }
     })
 })

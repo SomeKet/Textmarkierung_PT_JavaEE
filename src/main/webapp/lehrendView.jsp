@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/script.js" defer></script>
     <script type="text/javascript" src="https://cdn.tiny.cloud/1/e0q0w4t1ep5f35kyxt999mzlm4ro2px179u580taztflq9sf/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Aufagbe</title>
@@ -17,6 +17,7 @@
 <body>
 <div>
     <form id="get-aufgabe-loesung-form" >
+        <textarea id="aufgabenstellung" type="text" placeholder="Aufgabenstellung" name="aufgabenstellung" required></textarea>
         <textarea id="textarea"></textarea>
         <input type="submit" value="Aufgabe speichern">
     </form>
