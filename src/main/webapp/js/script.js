@@ -1,4 +1,4 @@
-let test = []; let kategorien = [];
+let test = []; let kategorien = []; let aufgabenPack = [];
 window.test = test;
 window.kategorien = kategorien;
 
@@ -66,17 +66,47 @@ function buttonErstellenKategorie(bez, tag, farbe) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById("get-aufgabe-loesung-form").addEventListener('submit', (e) => {
+    document.getElementById('aufgabenstellung-form').addEventListener('submit', (e) => {
         e.preventDefault();
-        const loesung = tinymce.get('textarea').getContent({format : 'text'});
-        const aufgabenstellung = document.getElementById('aufgabenstellung').value;
-        if(loesung != null && aufgabenstellung != null){
-            test.push({loesung, aufgabenstellung})
-            console.log(test);
-            document.getElementById('aufgabe').innerHTML += `<p>${aufgabenstellung}</p>`;
-            document.getElementById('aufgabe').innerHTML += `<p>${loesung}</p>`;
-        }
+        const aufgabentext = document.getElementById('aufgabentext').value;
+        document.getElementById('aufgabenstellung').readOnly = true;
+        document.getElementById('aufgabentext').readOnly = true;
+        tinymce.get('textarea').setContent(aufgabentext);
+
     })
 })
+
+document.getElementById('aufgabeAendern').addEventListener('click', e => {
+    let aufgabenstellung = document.getElementById('aufgabenstellung');
+    let aufgabentext = document.getElementById('aufgabentext');
+
+    if (aufgabenstellung.readOnly && aufgabentext.readOnly) {
+        // Schreibrechte aktivieren
+        aufgabenstellung.readOnly = false;
+        aufgabentext.readOnly = false;
+    } else {
+        // Schreibrechte deaktivieren
+        aufgabenstellung.readOnly = true;
+        aufgabentext.readOnly = true;
+        let text = document.getElementById('aufgabentext').value;
+        tinymce.get('textarea').setContent(text);
+    }
+
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    document.getElementById("getloesung-form").addEventListener('submit', (e) => {
+        e.preventDefault();
+        const loesung = tinymce.get('textarea').getContent({format : 'text'});
+
+            aufgabenPack.push(loesung);
+            console.log(aufgabenPack);
+            document.getElementById('aufgabe').innerHTML += `<p>${aufgabenPack.aufgabenstellung}</p>`;
+            document.getElementById('aufgabe').innerHTML += `<p>${aufgabenPack.aufgabentext}</p>`;
+            document.getElementById('aufgabe').innerHTML += `<p>${loesung}</p>`;
+    })
+})
+
 
 

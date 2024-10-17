@@ -16,10 +16,15 @@
 </head>
 <body>
 <div>
-    <form id="get-aufgabe-loesung-form" >
+    <form id="aufgabenstellung-form">
         <textarea id="aufgabenstellung" type="text" placeholder="Aufgabenstellung" name="aufgabenstellung" required></textarea>
-        <textarea id="textarea"></textarea>
+        <textarea id="aufgabentext" type="text" placeholder="Aufgabentext" name="aufgabentext" required></textarea>
         <input type="submit" value="Aufgabe speichern">
+    </form>
+    <button id="aufgabeAendern">Aufgabe ändern</button>
+    <form id="getloesung-form" >
+        <textarea id="textarea" placeholder="Hier kommt die Lösung rein"></textarea>
+        <input type="submit" value="Lösung speichern">
     </form>
 </div>
 <div id="container">
